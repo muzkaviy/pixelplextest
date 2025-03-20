@@ -29,7 +29,7 @@ import { useEffect, useState } from "react";
 import { LiaMousePointerSolid } from "react-icons/lia";
 import { toast } from "react-toastify";
 import { MeetingSchema } from "schema";
-import { postApi } from "services/api";
+import { getApi, postApi } from "services/api";
 
 const AddMeeting = (props) => {
   const { onClose, isOpen } = props;
@@ -96,7 +96,24 @@ const AddMeeting = (props) => {
     }
   };
 
-  useEffect(() => {}, [props.id, values.related]);
+  useEffect(() => {
+    async function fetchAllData() {
+      const user = JSON.parse(localStorage.getItem("user"));
+      try {
+        const response = await getApi(
+          user.role === "superAdmin"
+            ? "api/contact/"
+            : `api/contact/?createBy=${user._id}`
+        );
+        setContactData(response.data);
+        return response.data;
+      } catch (error) {
+        throw error;
+      }
+    }
+
+    fetchAllData();
+  }, [props.id, values.related]);
 
   const extractLabels = (selectedItems) => {
     return selectedItems.map((item) => item._id);

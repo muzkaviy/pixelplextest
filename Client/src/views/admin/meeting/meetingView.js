@@ -27,7 +27,6 @@ const MeetingView = (props) => {
   const [data, setData] = useState();
   const [edit, setEdit] = useState(false);
   const [deleteModel, setDelete] = useState(false);
-  const user = JSON.parse(localStorage.getItem("user"));
   const [isLoding, setIsLoding] = useState(false);
   const navigate = useNavigate();
 
