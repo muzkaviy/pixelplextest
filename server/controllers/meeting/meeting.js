@@ -2,12 +2,11 @@ const MeetingHistory = require("../../model/schema/meeting");
 const mongoose = require("mongoose");
 
 const add = async (req, res) => {
-  console.log(req.body);
   try {
     req.body.createdDate = new Date();
     const meeting = new MeetingHistory(req.body);
     await meeting.save();
-    res.status(200).json(user);
+    res.status(200).json();
   } catch (err) {
     console.error("Failed to create MeetingHistory:", err);
     res.status(400).json({ error: "Failed to create MeetingHistory" });

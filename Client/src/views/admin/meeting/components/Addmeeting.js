@@ -93,9 +93,6 @@ const AddMeeting = (props) => {
       toast.error(`server error`);
     } finally {
       setIsLoding(false);
-      props.onClose();
-      formik.resetForm();
-      props.setAction((pre) => !pre);
     }
   };
 
