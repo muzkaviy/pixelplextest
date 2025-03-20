@@ -57,7 +57,7 @@ const Index = () => {
               <MenuItem
                 py={2.5}
                 color={"green"}
-                onClick={() => navigate(`/metting/${row?.values._id}`)}
+                onClick={() => navigate(`/meeting/${row?.values._id}`)}
                 icon={<ViewIcon fontSize={15} />}
               >
                 View
@@ -92,7 +92,7 @@ const Index = () => {
       Header: "Agenda",
       accessor: "agenda",
       cell: (cell) => (
-        <Link to={`/metting/${cell?.row?.values._id}`}>
+        <Link to={`/meeting/${cell?.row?.values._id}`}>
           {" "}
           <Text
             me="10px"
